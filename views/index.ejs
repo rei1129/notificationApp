@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>サイトアプリケーション</title>
+  </head>
+  <body>
+    <h1>アプリケーション</h1>
+    <h2>対象のURL</h2>
+    <ul>
+      <% monitoredUrls.forEach(url => { %>
+        <li>
+          <%= url %>
+          <form action="/remove" method="post" style="display:inline;">
+            <input type="hidden" name="url" value="<%= url %>" />
+            <button type="submit">削除</button>
+          </form>
+        </li>
+      <% }); %>
+    </ul>
+    <h2>新しいURLを追加</h2>
+    <form action="/add" method="post">
+      <label>
+        URL:
+        <input type="url" name="url" required />
+      </label>
+      <button type="submit">追加</button>
+    </form>
+  </body>
+</html>
